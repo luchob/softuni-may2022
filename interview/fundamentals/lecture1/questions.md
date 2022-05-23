@@ -1,4 +1,4 @@
-# Лекция Introduction ot Internet
+# Лекция Introduction of Internet
 
 1. Какво е мрежови протокол?
 2. Какво е DNS?
