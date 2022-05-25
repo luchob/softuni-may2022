@@ -6,6 +6,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
+//TODO - example with UUID!!!!
+
 @Entity
 @Table(name = "models")
 public class ModelEntity extends BaseEntity {
