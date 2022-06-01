@@ -1,0 +1,136 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header>
+    <nav class="main-nav">
+        <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/">Login</a>
+                </li>
+                <li>
+                    <a href="/">Register</a>
+                </li>
+                <li>
+                    <a href="/">About</a>
+                </li>
+				<li>
+                    <a href="/">Add new route</a>
+                </li>
+                <li>
+                    <a href="/">Profile</a>
+                </li>
+                <li>
+                    <a href="/">Admin</a>
+                </li>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+        </ul>
+    </nav>
+</header>
+    <!-- Top Container -->
+    <section class="top-container">
+        <div class="showcase">
+            <h1>Find amazing routes</h1>
+            <p>Sick of staying at home, sick of limitations? Be free! Find a route and enjoy nature!</p>
+            <a href="/routes" class="btn">To routes</a>
+        </div>
+        <div class="top-box top-box-a">
+            <h4>Времето в София</h4>
+            <h4><span id="box-a-temp">15</span><span>&#8451;</span></h4>
+            <img id="box-a-img" src="/images/sun.png" height="150px" alt="">
+        </div>
+        <div class="top-box top-box-b">
+            <h4>Времето в Созопол</h4>
+            <h4><span id="box-b-temp">27</span><span>&#8451;</span></h4>
+            <img id="box-b-img" src="/images/cloudy.png" height="150px" alt="">
+        </div>
+    </section>
+
+    <!-- Boxes Section -->
+    <section class="boxes">
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/pedestrian.png" height="150px" alt="">
+                <h3>Pedestrian</h3>
+                <p>Is this your Leg day?</p>
+            </div>
+        </a>
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/bicycle.png" height="150px" alt="">
+                <h3>Bicycle</h3>
+                <p>When you want to be one with nature!</p>
+            </div>
+        </a>
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/motorcycle.png" height="150px" alt="">
+                <h3>Motorcycle</h3>
+                <p>When you want the wind to blow on your face!</p>
+            </div>
+        </a>
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/car.png" height="150px" alt="">
+                <h3>Car</h3>
+                <p>Going on a trip with friends?</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- Info Section -->
+    <section class="road">
+<!--        Most commented route first picture -->
+        <img th:src="${mostCommented.pictures[0].url}" alt="">
+        <div>
+            <h2>The most commented route: <span th:text="${mostCommented.name}"></span> </h2>
+            <p>Read more about the most commented route and do not miss the
+                chance to visit it and give your opinion to help other users.</p>
+<!--            Generate link to route -->
+            <a th:href="@{/routes/details/:id(id = ${mostCommented.id})}" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="gallery">
+        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630583467/koncyanx4gqwzt9vxgx4.jpg" width="200px" height="200px" alt="">
+        <img src="http://res.cloudinary.com/ch-cloud/image/upload/v1630582448/oowojgn4lagybkvv20jb.jpg" width="200px" height="200px" alt="">
+    </section>
+
+    <!-- <script th:src="@{/js/weather.js}"></script> -->
+</div>
+<!-- Wrapper Ends -->'
+
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

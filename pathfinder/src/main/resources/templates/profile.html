@@ -1,0 +1,94 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+<header>
+    <nav class="main-nav">
+        <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/">Login</a>
+                </li>
+                <li>
+                    <a href="/">Register</a>
+                </li>
+                <li>
+                    <a href="/">About</a>
+                </li>
+				<li>
+                    <a href="/">Add new route</a>
+                </li>
+                <li>
+                    <a href="/">Profile</a>
+                </li>
+                <li>
+                    <a href="/">Admin</a>
+                </li>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+        </ul>
+    </nav>
+</header>
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
+                <div class="profile-card p-3 py-4">
+                    <div class="text-center"><img src="/images/profile.jpg" width="100" class="rounded-circle"></div>
+                    <div class="text-center mt-3">
+                        <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                        <h5 class="mt-4 mb-0">Full name</h5>
+                        <span>UI/UX Designer</span>
+                        <h5 class="mt-2 mb-0">Username</h5>
+                        <span>UI/UX Designer</span>
+                        <h5 class="mt-2 mb-0">Age</h5>
+                        <span>33</span>
+                        <div class="px-4 mt-5">
+                            <p class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
+                                optio perferendis quam quod ratione rem sit soluta ut! A dolor laborum, maiores neque
+                                nesciunt quis rerum sunt suscipit. </p>
+                        </div>
+                        <ul class="social-list">
+                            <li><i class="fab fa-facebook-square"></i></li>
+                            <li><i class="fab fa-instagram"></i></li>
+                            <li><i class="fab fa-linkedin"></i></li>
+                            <li><i class="fab fa-google"></i></li>
+                        </ul>
+                        <div class="buttons">
+                            <button class="btn btn-outline-primary px-4">Back</button>
+<!--                            <button class="btn btn-primary px-4 ms-3">Contact</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</html>
