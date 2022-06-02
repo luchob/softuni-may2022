@@ -72,7 +72,7 @@
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="firstName" class="text-white font-weight-bold">First Name</label>
-                <input  id="firstName" type="text" min="2" max="20" class="form-control"
+                <input  id="firstName" name="firstName" type="text" min="2" max="20" class="form-control"
                        placeholder="First name"/>
                 <p class="errors alert alert-danger">
                     First name is required.
@@ -80,7 +80,7 @@
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="lastName" class="text-white font-weight-bold">Last Name</label>
-                <input id="lastName" type="text" min="2" max="20" class="form-control"
+                <input id="lastName" name="lastName" type="text" min="2" max="20" class="form-control"
                        placeholder="First name"/>
                 <p class="errors alert alert-danger">
                     Last name is required.
@@ -89,16 +89,16 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6 mb-3">
-                <label for="username" class="text-white font-weight-bold">Username</label>
-                <input id="username" type="text" min="2" max="20" class="form-control"
-                       placeholder="First name"/>
+                <label for="email" class="text-white font-weight-bold">Username</label>
+                <input id="email" name="email" type="email" min="2" max="20" class="form-control"
+                       placeholder="User name"/>
                 <p class="errors alert alert-danger">
                     Username is required.
                 </p>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="password" class="text-white font-weight-bold">Password</label>
-                <input id="password" type="password" min="2" max="20" class="form-control"
+                <input id="password" name="password" type="password" min="2" max="20" class="form-control"
                        placeholder="Password"/>
                 <p class="errors alert alert-danger">
                     Password is required.
@@ -106,13 +106,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="text-center text-white font-weight-bold" for="roles">Roles</label>
-            <select  id="roles" class="form-control" multiple>
-                <option>
-                </option>
-            </select>
+            <label for="confirmPassword" class="text-white font-weight-bold">Password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" min="2" max="20" class="form-control"
+                   placeholder="Password"/>
             <p class="errors alert alert-danger">
-                Selecting a role is required.
+                Passwords should match.
             </p>
         </div>
 

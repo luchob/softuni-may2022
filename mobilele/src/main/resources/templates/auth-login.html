@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
      <meta charset="UTF-8">
     <title>MobiLeLeLe</title>
@@ -66,8 +67,10 @@
 
 <div class="container">
     <h2 class="text-center text-white">Login</h2>
-    <form method="POST" 
-          class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+    <form
+            th:action="@{/users/login}"
+            th:method="post"
+            class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
         <div class="form-group">
             <label for="username" class="text-white font-weight-bold">Username</label>
             <input value="username" id="username" name="username" type="text" min="2" max="50"
@@ -82,14 +85,14 @@
 
         </div>
         
-        <p class="errors alert alert-danger">
-            Invalid username or password.
-        </p>
+<!--        <p class="errors alert alert-danger">-->
+<!--            Invalid username or password.-->
+<!--        </p>-->
 
         <div class="row">
             <div class="col col-md-4">
                 <div class="button-holder d-flex">
-                    <input type="submit" class="btn btn-info btn-lg" value="Submit Offer"/>
+                    <input type="submit" class="btn btn-info btn-lg" value="Login"/>
                 </div>
             </div>
         </div>
