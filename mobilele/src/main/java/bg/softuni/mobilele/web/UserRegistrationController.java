@@ -25,8 +25,8 @@ public class UserRegistrationController {
   }
 
   @ModelAttribute("userModel")
-  public void initUserModel(Model model) {
-    model.addAttribute("userModel", new UserRegisterDTO());
+  public UserRegisterDTO initUserModel() {
+    return new UserRegisterDTO();
   }
 
   @GetMapping("/register")
