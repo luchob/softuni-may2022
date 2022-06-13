@@ -39,13 +39,13 @@ public class UserRegistrationController {
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes) {
 
-    if (bindingResult.hasErrors() || !this.userService.registerAndLogin(userModel)) {
+    if (bindingResult.hasErrors()) {
       redirectAttributes.addFlashAttribute("userModel", userModel);
       redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel",
               bindingResult);
-      bindingResult.rejectValue("email", "UsernameTakenError", "This username is already taken.");
       return "redirect:/users/register";
     }
+    this.userService.registerAndLogin(userModel);
 
     return "redirect:/";
   }
