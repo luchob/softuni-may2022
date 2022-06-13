@@ -58,9 +58,12 @@
                        type="text"
                        class="form-control"
                        placeholder="Email"/>
-                <p class="invalid-feedback errors alert alert-danger">
-                    Email is required, should be valid and should not be taken!
-                </p>
+                <div class="invalid-feedback errors alert alert-danger">
+                    <div
+                        th:each="err : ${#fields.errors('email')}"
+                        th:text="${err}"
+                    />
+                </div>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="password" class="text-white font-weight-bold">Password</label>
@@ -79,15 +82,14 @@
             <label for="confirmPassword" class="text-white font-weight-bold">Repeat Password</label>
             <input
                     id="confirmPassword"
-                    name="confirmPassword"
+                    th:field="*{confirmPassword}"
+                    th:errorclass="is-invalid"
                     type="password"
-                    min="2"
-                    max="20"
                     class="form-control"
                     placeholder="Repeat password"
             />
             <p class="invalid-feedback errors alert alert-danger">
-                Password and repeat password should match.
+                Passwords should match.
             </p>
         </div>
 
