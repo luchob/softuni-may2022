@@ -1,4 +1,4 @@
-package bg.softuni.mobilele.model.entity.enums;
+package bg.softuni.mobilele.model.enums;
 
 public enum EngineEnum {
   GASOLINE,
