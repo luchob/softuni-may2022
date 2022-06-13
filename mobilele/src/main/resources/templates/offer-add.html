@@ -24,11 +24,21 @@
         <div class="row">
 
             <div class="form-group col-md-6 mb-3">
-                <label class="text-center text-white font-weight-bold" for="model">Model</label>
-                <select id="model" class="form-control">
+                <label class="text-center text-white font-weight-bold" for="modelId">Model</label>
+                <select id="modelId"
+                        name="modelId"
+                        th:errorclass="is-invalid"
+                        class="form-control">
                     <option value="">- Select a model -</option>
-                    <optgroup label="Brand name">
-                        <option>Model</option>
+                    <optgroup
+                            th:each="brand : ${brands}"
+                            th:label="${brand.name}">
+                        <option
+                            th:each="model : ${brand.models}"
+                            th:text="${model.name}"
+                            th:value="${model.id}"
+                            th:selected="*{modelId} == ${model.id}">Model
+                        </option>
                     </optgroup>
                 </select>
                 <p class="errors alert alert-danger">
@@ -86,7 +96,7 @@
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="year" class="text-white font-weight-bold">Year</label>
-                <input id="year" type="number" min="1900" max="2099" step="1" class="form-control"
+                <input id="year" name="year" type="number" min="1900" max="2099" step="1" class="form-control"
                        placeholder="Manufacturing year"/>
                 <p class="errors alert alert-danger">
                     Manufacturing year is required.
