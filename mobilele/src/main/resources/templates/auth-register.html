@@ -59,7 +59,7 @@
                        class="form-control"
                        placeholder="Email"/>
                 <p class="invalid-feedback errors alert alert-danger">
-                    Email is required and should be valid.
+                    Email is required, should be valid and should not be taken!
                 </p>
             </div>
             <div class="form-group col-md-6 mb-3">
@@ -76,11 +76,18 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="confirmPassword" class="text-white font-weight-bold">Password</label>
-            <input id="confirmPassword" name="confirmPassword" type="password" min="2" max="20" class="form-control"
-                   placeholder="Password"/>
-            <p class="errors alert alert-danger">
-                Passwords should match.
+            <label for="confirmPassword" class="text-white font-weight-bold">Repeat Password</label>
+            <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    min="2"
+                    max="20"
+                    class="form-control"
+                    placeholder="Repeat password"
+            />
+            <p class="invalid-feedback errors alert alert-danger">
+                Password and repeat password should match.
             </p>
         </div>
 
