@@ -1,0 +1,153 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+    <nav class="main-nav">
+        <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/">Login</a>
+                </li>
+                <li>
+                    <a href="/">Register</a>
+                </li>
+                <li>
+                    <a href="/">About</a>
+                </li>
+				<li>
+                    <a href="/">Add new route</a>
+                </li>
+                <li>
+                    <a href="/">Profile</a>
+                </li>
+                <li>
+                    <a href="/">Admin</a>
+                </li>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+        </ul>
+    </nav>
+</header>
+
+    <input type="hidden" name="routeId" id="routeId">   
+    <div class="details-main">
+        <section class="route-info text-center">
+            <h4 id="track-name"></h4>
+            <p>Total distance: <span id="totalDistance"></span> km</p>
+            <p>Author name: <span id="authorName"></span></p>
+            <h4>Difficulty Level (1-3):</h4>
+            <div class="level">
+                <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
+                <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
+                <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
+                
+            </div>
+            <div>
+                <h4>Choose picture</h4>
+                <form action="/" method="POST" enctype="multipart/form-data">
+                    <input  type="hidden" id="id" name="routeId">
+                    <div class="form-group">
+                        <label>
+                            <input type="text" name="title">
+                        </label>
+                    </div>
+                    <div class="image-upload">
+                        <label for="picture">
+                            <img src="/images/add-img.png" alt=""/>
+                        </label>
+                        <input style="display: none" id="picture" type="file" name="picture"/>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn-primary rounded">Upload Picture</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section id="map"></section>
+        <section id="video">
+            <iframe id="frame" src="https://www.youtube.com/embed/">
+            </iframe>
+        </section>
+        <section class="route-description text-center">
+            <h4>Description:</h4>
+            <p id="route-description">Description: </p>
+        </section>
+        <section class="gallery">
+            <img class="rounded" src="/images/pic4.jpg" height="100%" alt="">
+            <img class="rounded" src="/images/pic1.jpg" height="100%" alt="">
+        </section>
+        <section class="comments">
+            <h1>Comments</h1>
+
+            <div>
+                <!-- Comments submission -->
+                <form id="commentForm" method="POST"
+                      action="/">
+                    <div class="form-group">
+                        <h4>Leave a comment</h4>
+                        <label for="message">Message</label>
+                        <textarea name="message"
+                                  id="message"
+                                  cols="30"
+                                  rows="5"
+                                  class="form-control"
+                                  style="background-color: white;"></textarea>
+                        <small id="messageError" class="invalid-feedback">
+                            Message should be at least 10 characters.
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit"
+                               class="btn"
+                               id="postComment"
+                               value="Post Comment"/>
+                    </div>
+                </form>
+                <!-- Comments submission -->
+            </div>
+
+            <!-- All comments section -->
+            <div>
+
+                <span id="commentCtnr"><!-- Comments section, filled in by script --></span>
+            </div>
+            <!-- EO: All comments section -->
+        </section>
+        <p style="visibility: hidden">GPX Download: <a id="gpxDownload"></a></p>
+    </div>
+	<!-- Scripts: track and comments 
+    <script th:src="@{/js/track.js}"></script>
+    <script th:src="@{/js/comments.js}"></script>
+	-->
+</div>
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>

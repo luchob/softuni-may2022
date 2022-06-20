@@ -1,0 +1,148 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pathfinder</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+          integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+</head>
+<body>
+<!--<div class="wrapper">-->
+<!-- Navigation -->
+<header>
+    <nav class="main-nav">
+        <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/">Login</a>
+                </li>
+                <li>
+                    <a href="/">Register</a>
+                </li>
+                <li>
+                    <a href="/">About</a>
+                </li>
+				<li>
+                    <a href="/">Add new route</a>
+                </li>
+                <li>
+                    <a href="/">Profile</a>
+                </li>
+                <li>
+                    <a href="/">Admin</a>
+                </li>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Top Container -->
+<div class="row justify-content-center ">
+    <form id="add-route-form" class="w-50 rounded text-white mt-5"
+          action="/" 
+          method="/" enctype="multipart/form-data">
+
+        <h3 class="border-left border-light pl-2">Add a new route</h3>
+        <div>
+            <div class="form-group">
+                <label for="inputName" class="col-form-label ">Name</label>
+            </div>
+            <div class="form-group">
+                <input name="name" 
+                       required minlength="5" maxlength="20"
+                       type="text"
+                       id="inputName"
+                       class="form-control"
+                       aria-describedby="inputNameError">
+                <small id="inputNameError"
+                       class="invalid-feedback bg-danger rounded">Name length must be more than 3 characters</small>
+
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group">
+                <label for="inputDescription" class="col-form-label ">Description</label>
+            </div>
+            <div class="form-group">
+                    <textarea name="description" 
+                              required minlength="5"
+                              id="inputDescription"
+                              class="form-control"
+                              aria-describedby="inputDescriptionError"></textarea>
+                <small id="inputDescriptionError"
+                       class="invalid-feedback  form-text bg-danger rounded">Description length must be more than 5
+                    characters</small>
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group">
+                <label for="inputGpx" class="col-form-label ">GPX Coordinates</label>
+            </div>
+            <div class="form-group">
+                <input type="file" name="gpxCoordinates"
+					   required
+                       id="inputGpx"
+                       class="form-control-file"
+                       aria-describedby="inputGpxError">
+                <small id="inputGpxError"
+                       class="invalid-feedback  form-text bg-danger rounded">Must be valid GPX Coordinates</small>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <label for="level">Level</label>
+                <select id="level" class="custom-select">
+                    <option value="" selected>Select level</option>
+                    <option value="1" text="ADVANCED">Select level</option>
+                </select>
+            </div>
+        </div>
+        <div>
+
+            <div class="form-group">
+                <label for="videoUrl">Video Url (only last eleven characters from Youtube)</label>
+                <input id="videoUrl" type="text"
+                       class="form-control" placeholder="Video url">
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group p-3">
+                <label class="p-2" for="categories">Categories:</label>
+                <input class="m-3" type="checkbox" name="categories" id="categories"
+                       value="1" text="Category">
+				<br>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-primary btn-block w-50" type="submit">Add Route</button>
+        </div>
+
+    </form>
+</div>
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+</body>
+</html>
