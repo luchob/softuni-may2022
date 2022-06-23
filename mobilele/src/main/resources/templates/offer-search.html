@@ -47,6 +47,7 @@
 </div>
 
 <div class="offers row mx-auto d-flex flex-row justify-content-center" style="margin-top: 40px;">
+
     <div th:each="offer: ${offers}" class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
         <div class="card-img-top-wrapper">
             <img class="card-img-top" th:src="${offer.imageUrl}" alt="Car image">
@@ -66,7 +67,7 @@
             <a class="card-link" href="/">Details</a>
         </div>
     </div>
-
+    <h3 th:if="${offers != null && offers.size == 0}" class="text-info">There are no offers with this model yet</h3>
 </div>
 
 <div>
