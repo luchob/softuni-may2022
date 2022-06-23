@@ -41,15 +41,21 @@
                         </option>
                     </optgroup>
                 </select>
-                <p class="errors alert alert-danger">
+                <p class="invalid-feedback errors alert alert-danger">
                     Vechicle model is required.
                 </p>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="price" class="text-white font-weight-bold">Price</label>
-                <input id="price" type="number" min="0" step="100" class="form-control"
+                <input id="price"
+                       th:field="*{price}"
+                       th:errorclass="is-invalid"
+                       type="number"
+                       min="0"
+                       step="100"
+                       class="form-control"
                        placeholder="Suggested price"/>
-                <p  class="errors alert alert-danger">
+                <p  class="invalid-feedback errors alert alert-danger">
                     Suggested price is required.
                 </p>
             </div>
@@ -96,18 +102,28 @@
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="year" class="text-white font-weight-bold">Year</label>
-                <input id="year" name="year" type="number" min="1900" max="2099" step="1" class="form-control"
+                <input id="year"
+                       th:field="*{year}"
+                       th:errorclass="is-invalid"
+                       type="number"
+                       min="1900"
+                       max="2099"
+                       step="1"
+                       class="form-control"
                        placeholder="Manufacturing year"/>
-                <p class="errors alert alert-danger">
+                <p class="invalid-feedback errors alert alert-danger">
                     Manufacturing year is required.
                 </p>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label for="mileage" class="text-white font-weight-bold">Mileage</label>
-                <input id="mileage" type="number" min="0" max="900000" step="1000"
+                <input id="mileage"
+                       th:field="*{mileage}"
+                       th:errorclass="is-invalid"
+                       type="number"
                        class="form-control"
                        placeholder="Mileage in kilometers"/>
-                <p class="errors alert alert-danger">
+                <p class="invalid-feedback errors alert alert-danger">
                     Mileage in kilometers is required.
                 </p>
             </div>
@@ -115,17 +131,28 @@
 
         <div class="form-group">
             <label class="text-white font-weight-bold" for="description">Description</label>
-            <textarea id="description" type="textarea" class="form-control" rows="3"
-                      placeholder="Description"></textarea>
-            <p class="errors alert alert-danger">
+            <textarea
+                    id="description"
+                    th:field="*{description}"
+                    th:errorclass="is-invalid"
+                    type="textarea"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Description">
+            </textarea>
+            <p class="invalid-feedback errors alert alert-danger">
                 Description is required.
             </p>
         </div>
         <div class="form-group">
             <label class="text-white font-weight-bold" for="imageUrl">Image URL</label>
-            <input id="imageUrl" type="url" class="form-control"
+            <input id="imageUrl"
+                   th:field="*{imageUrl}"
+                   th:errorclass="is-invalid"
+                   type="url"
+                   class="form-control"
                    placeholder="Put vehicle image URL here">
-            <p class="errors alert alert-danger">
+            <p class="invalid-feedback errors alert alert-danger">
                 Vehicle image URL is required.
             </p>
         </div>

@@ -1,6 +1,7 @@
 package bg.softuni.mobilele.model.mapper;
 
 import bg.softuni.mobilele.model.dto.AddOfferDTO;
+import bg.softuni.mobilele.model.dto.OfferDTO;
 import bg.softuni.mobilele.model.entity.OfferEntity;
 import org.mapstruct.Mapper;
 
@@ -8,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface OfferMapper {
 
   OfferEntity addOfferDtoToOfferEntity(AddOfferDTO addOfferDTO);
+
+  OfferDTO offerEntityToOfferDTO(OfferEntity entity);
 }

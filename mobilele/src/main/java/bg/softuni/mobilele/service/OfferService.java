@@ -1,6 +1,7 @@
 package bg.softuni.mobilele.service;
 
 import bg.softuni.mobilele.model.dto.AddOfferDTO;
+import bg.softuni.mobilele.model.dto.OfferDTO;
 import bg.softuni.mobilele.model.entity.ModelEntity;
 import bg.softuni.mobilele.model.entity.OfferEntity;
 import bg.softuni.mobilele.model.entity.UserEntity;
@@ -9,16 +10,21 @@ import bg.softuni.mobilele.repository.ModelRepository;
 import bg.softuni.mobilele.repository.OfferRepository;
 import bg.softuni.mobilele.repository.UserRepository;
 import bg.softuni.mobilele.user.CurrentUser;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class OfferService {
 
-  private OfferRepository offerRepository;
-  private UserRepository userRepository;
-  private ModelRepository modelRepository;
-  private CurrentUser currentUser;
-  private OfferMapper offerMapper;
+  private final OfferRepository offerRepository;
+  private final UserRepository userRepository;
+  private final ModelRepository modelRepository;
+  private final CurrentUser currentUser;
+  private final OfferMapper offerMapper;
 
   public OfferService(OfferRepository offerRepository,
                       UserRepository userRepository,
@@ -47,6 +53,24 @@ public class OfferService {
     newOffer.setSeller(seller);
 
     offerRepository.save(newOffer);
+  }
+
+  public Page<OfferDTO> getPage(Pageable pageable) {
+    return offerRepository.
+        findAll(pageable).
+        map(this::map);
+  }
+
+  public Optional<OfferDTO> getOfferById(UUID offerUUID) {
+    return offerRepository.
+        findById(offerUUID).
+        map(this::map);
+  }
+
+  private OfferDTO map(OfferEntity offerEntity) {
+    var result = offerMapper.offerEntityToOfferDTO(offerEntity);
+
+    return result;
   }
 
 }

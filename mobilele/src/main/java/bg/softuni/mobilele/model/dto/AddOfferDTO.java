@@ -20,6 +20,10 @@ public class AddOfferDTO {
   @NotNull
   private Integer price;
 
+  @Positive
+  @NotNull
+  private Integer mileage;
+
   @Min(1900)
   @NotNull
   private Integer year;
@@ -66,6 +70,42 @@ public class AddOfferDTO {
 
   public AddOfferDTO setModelId(Long modelId) {
     this.modelId = modelId;
+    return this;
+  }
+
+  public Integer getPrice() {
+    return price;
+  }
+
+  public AddOfferDTO setPrice(Integer price) {
+    this.price = price;
+    return this;
+  }
+
+  public Integer getYear() {
+    return year;
+  }
+
+  public AddOfferDTO setYear(Integer year) {
+    this.year = year;
+    return this;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public AddOfferDTO setDescription(String description) {
+    this.description = description;
+    return this;
+  }
+
+  public Integer getMileage() {
+    return mileage;
+  }
+
+  public AddOfferDTO setMileage(Integer mileage) {
+    this.mileage = mileage;
     return this;
   }
 }
