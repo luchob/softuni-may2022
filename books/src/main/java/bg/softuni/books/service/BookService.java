@@ -38,6 +38,12 @@ public class BookService {
         collect(Collectors.toList());
   }
 
+  public Long createBook(BookDTO bookDTO) {
+    // TODO: implement the method.
+
+    return 50L;//TODO:
+  }
+
   private BookDTO map(BookEntity bookEntity) {
     return new
         BookDTO().
