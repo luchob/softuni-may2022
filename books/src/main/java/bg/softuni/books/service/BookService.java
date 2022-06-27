@@ -13,10 +13,15 @@ import java.util.stream.Collectors;
 @Service
 public class BookService {
 
-  private BookRepository bookRepository;
+  private final BookRepository bookRepository;
 
   public BookService(BookRepository bookRepository) {
     this.bookRepository = bookRepository;
+  }
+
+
+  public void deleteBookById(Long bookId) {
+    bookRepository.deleteById(bookId);
   }
 
   public Optional<BookDTO> getBookById(Long bookId) {
