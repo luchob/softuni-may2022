@@ -1,10 +1,10 @@
-package bg.softuni.resttemplete;
+package bg.softuni.resttemplate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ResttempleteApplicationTests {
+class ResttemplateApplicationTests {
 
 	@Test
 	void contextLoads() {

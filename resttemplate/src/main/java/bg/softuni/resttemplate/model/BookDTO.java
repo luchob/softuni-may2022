@@ -1,4 +1,4 @@
-package bg.softuni.resttemplete.model;
+package bg.softuni.resttemplate.model;
 
 public class BookDTO {
 

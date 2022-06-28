@@ -1,6 +1,6 @@
-package bg.softuni.resttemplete;
+package bg.softuni.resttemplate;
 
-import bg.softuni.resttemplete.model.BookDTO;
+import bg.softuni.resttemplate.model.BookDTO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

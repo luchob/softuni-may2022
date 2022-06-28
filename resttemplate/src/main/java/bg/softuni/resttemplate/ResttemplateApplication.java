@@ -1,13 +1,13 @@
-package bg.softuni.resttemplete;
+package bg.softuni.resttemplate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ResttempleteApplication {
+public class ResttemplateApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ResttempleteApplication.class, args);
+		SpringApplication.run(ResttemplateApplication.class, args);
 	}
 
 }
