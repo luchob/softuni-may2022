@@ -2,8 +2,10 @@ package bg.softuni.books.service;
 
 import bg.softuni.books.model.dto.AuthorDTO;
 import bg.softuni.books.model.dto.BookDTO;
+import bg.softuni.books.model.entity.AuthorEntity;
 import bg.softuni.books.model.entity.BookEntity;
 import bg.softuni.books.repository.BookRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,14 +16,20 @@ import java.util.stream.Collectors;
 public class BookService {
 
   private final BookRepository bookRepository;
+  private final AuthorService authorService;
 
-  public BookService(BookRepository bookRepository) {
+  public BookService(BookRepository bookRepository, AuthorService authorService) {
     this.bookRepository = bookRepository;
+    this.authorService = authorService;
   }
 
 
   public void deleteBookById(Long bookId) {
-    bookRepository.deleteById(bookId);
+    try {
+      this.bookRepository.deleteById(bookId);
+    } catch (EmptyResultDataAccessException e) {
+      e.printStackTrace();
+    }
   }
 
   public Optional<BookDTO> getBookById(Long bookId) {
@@ -39,9 +47,19 @@ public class BookService {
   }
 
   public Long createBook(BookDTO bookDTO) {
-    // TODO: implement the method.
+    String authorName = bookDTO.getAuthor().getName();
+    Optional<AuthorEntity> authorOpt = this.authorService.findAuthorByName(authorName);
 
-    return 50L;//TODO:
+    BookEntity entityToBeSaved = new BookEntity()
+            .setTitle(bookDTO.getTitle())
+            .setIsbn(bookDTO.getIsbn())
+            .setAuthor(authorOpt.isPresent()
+                    ? authorOpt.get()
+                    : this.authorService.save(new AuthorEntity().setName(authorName)));
+
+    this.bookRepository.save(entityToBeSaved);
+
+    return entityToBeSaved.getId();
   }
 
   private BookDTO map(BookEntity bookEntity) {
