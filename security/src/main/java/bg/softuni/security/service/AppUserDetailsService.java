@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 // NOTE: This is not annotated as @Service, because we will return it as a bean.
 public class AppUserDetailsService implements UserDetailsService {
 
-  private UserRepository userRepository;
+  private final UserRepository userRepository;
 
   public AppUserDetailsService(UserRepository userRepository) {
     this.userRepository = userRepository;
