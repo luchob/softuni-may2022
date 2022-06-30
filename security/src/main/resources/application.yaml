@@ -13,3 +13,8 @@ spring:
     hibernate:
       ddl-auto: create-drop
     open-in-view: false
+
+app:
+  default:
+    admin:
+      password: topsecret

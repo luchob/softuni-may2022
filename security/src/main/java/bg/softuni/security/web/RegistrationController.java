@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegistrationController {
 
-  private UserService userService;
+  private final UserService userService;
 
   public RegistrationController(UserService userService) {
     this.userService = userService;
