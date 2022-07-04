@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MobiLeLeLe</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+<div class="container">
+    <h2 class="text-center text-white">Search for offers</h2>
+    <form
+            th:method="POST"
+            th:action="@{/offers/search}"
+            th:object="${searchOfferModel}"
+            class="form-inline"
+            style="justify-content: center; margin-top: 50px;"
+    >
+        <div style="position: relative">
+            <input
+                    th:field="*{query}"
+                    th:errorclass="is-invalid"
+                    class="form-control mr-sm-2"
+                    style="width: 280px;"
+                    type="search"
+                    placeholder="Search by offer model name..."
+                    aria-label="Search"
+                    id="searchOffer"
+            />
+            <small
+                    id="searchOfferHelpInline"
+                    class="bg-danger text-light rounded invalid-feedback"
+                    style="width: 97%; position: absolute; padding: 3px 15px; text-align: center;"
+            >
+                Try writing something this time.
+            </small>
+        </div>
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+
+<div class="offers row mx-auto d-flex flex-row justify-content-center" style="margin-top: 40px;">
+
+    <div th:each="offer: ${offers}" class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
+        <div class="card-img-top-wrapper">
+            <img class="card-img-top" th:src="${offer.imageUrl}" alt="Car image">
+        </div>
+        <div class="card-body pb-1">
+            <h5 class="card-title" th:text="${offer.getOfferHighlight}"></h5>
+        </div>
+        <ul class="offer-details list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="card-text"><span th:text="'Mileage: ' + ${offer.mileage} + ' km'"></span></div>
+                <div class="card-text"><span th:text="'Price: ' + ${offer.price} + ' lv'"></span></div>
+                <div class="card-text"><span th:text="'Engine: ' + ${offer.engine}"></span></div>
+                <div class="card-text"><span th:text="'Transmission: ' + ${offer.transmission}"></span></div>
+            </li>
+        </ul>
+        <div class="card-body">
+            <a class="card-link" href="/">Details</a>
+        </div>
+    </div>
+    <h3 th:if="${offers != null && offers.size == 0}" class="text-info">There are no offers with this model yet</h3>
+</div>
+
+<div>
+    <footer></footer>
+</div>
+
+</body>
+</html>
