@@ -25,9 +25,8 @@
         <div class="form-group">
             <label for="username" class="text-white font-weight-bold">Email</label>
             <input
-                    th:field="*{username}"
-                    th:errorclass="is-invalid"
                     id="username"
+                    name="username"
                     type="text"
                     min="2"
                     max="50"
@@ -37,8 +36,6 @@
         <div class="form-group">
             <label for="password" class="text-white font-weight-bold">Password</label>
             <input
-                    th:field="*{password}"
-                    th:errorclass="is-invalid"
                     id="password"
                     name="password"
                     type="password"
