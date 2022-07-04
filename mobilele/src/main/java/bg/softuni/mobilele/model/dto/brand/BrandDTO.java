@@ -1,6 +1,6 @@
-package bg.softuni.mobilele.model.dto.BrandDTOs;
+package bg.softuni.mobilele.model.dto.brand;
 
-import bg.softuni.mobilele.model.dto.ModelDTOs.ModelDTO;
+import bg.softuni.mobilele.model.dto.model.ModelDTO;
 
 import java.util.ArrayList;
 import java.util.List;

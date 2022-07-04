@@ -1,7 +1,7 @@
 package bg.softuni.mobilele.service;
 
-import bg.softuni.mobilele.model.dto.BrandDTOs.BrandDTO;
-import bg.softuni.mobilele.model.dto.ModelDTOs.ModelDTO;
+import bg.softuni.mobilele.model.dto.brand.BrandDTO;
+import bg.softuni.mobilele.model.dto.model.ModelDTO;
 import bg.softuni.mobilele.model.entity.BrandEntity;
 import bg.softuni.mobilele.model.entity.ModelEntity;
 import bg.softuni.mobilele.repository.BrandRepository;

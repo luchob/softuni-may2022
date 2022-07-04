@@ -1,8 +1,7 @@
 package bg.softuni.mobilele.model.mapper;
 
-import bg.softuni.mobilele.model.dto.OfferDTOs.AddOfferDTO;
-import bg.softuni.mobilele.model.dto.OfferDTOs.CardListingOfferDTO;
-import bg.softuni.mobilele.model.entity.ModelEntity;
+import bg.softuni.mobilele.model.dto.offer.AddOfferDTO;
+import bg.softuni.mobilele.model.dto.offer.CardListingOfferDTO;
 import bg.softuni.mobilele.model.entity.OfferEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

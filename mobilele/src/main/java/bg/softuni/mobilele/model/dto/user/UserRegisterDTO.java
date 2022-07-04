@@ -1,4 +1,4 @@
-package bg.softuni.mobilele.model.dto.UserDTOs;
+package bg.softuni.mobilele.model.dto.user;
 
 import bg.softuni.mobilele.model.validation.FieldMatch;
 import bg.softuni.mobilele.model.validation.UniqueUserEmail;

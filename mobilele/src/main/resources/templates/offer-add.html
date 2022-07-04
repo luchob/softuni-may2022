@@ -49,6 +49,8 @@
                 <label for="price" class="text-white font-weight-bold">Price</label>
                 <input
                         id="price"
+                        th:field="*{price}"
+                        th:errorclass="is-invalid"
                         type="number"
                         min="0"
                         step="100"
@@ -104,10 +106,9 @@
                 <label for="year" class="text-white font-weight-bold">Year</label>
                 <input
                         id="year"
-                        name="year"
+                        th:field="*{year}"
+                        th:errorclass="is-invalid"
                         type="number"
-                        min="1900"
-                        max="2099"
                         step="1"
                         class="form-control"
                         placeholder="Manufacturing year"
@@ -120,10 +121,9 @@
                 <label for="mileage" class="text-white font-weight-bold">Mileage</label>
                 <input
                         id="mileage"
+                        th:field="*{mileage}"
+                        th:errorclass="is-invalid"
                         type="number"
-                        min="0"
-                        max="900000"
-                        step="1000"
                         class="form-control"
                         placeholder="Mileage in kilometers"
                 />
@@ -137,6 +137,8 @@
             <label class="text-white font-weight-bold" for="description">Description</label>
             <textarea
                     id="description"
+                    th:field="*{description}"
+                    th:errorclass="is-invalid"
                     type="textarea"
                     class="form-control"
                     rows="3"
@@ -151,6 +153,8 @@
             <label class="text-white font-weight-bold" for="imageUrl">Image URL</label>
             <input
                     id="imageUrl"
+                    th:field="*{imageUrl}"
+                    th:errorclass="is-invalid"
                     type="url"
                     class="form-control"
                     placeholder="Put vehicle image URL here"

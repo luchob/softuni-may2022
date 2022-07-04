@@ -1,10 +1,11 @@
 package bg.softuni.mobilele.web;
 
-import bg.softuni.mobilele.model.dto.OfferDTOs.AddOfferDTO;
-import bg.softuni.mobilele.model.dto.OfferDTOs.CardListingOfferDTO;
-import bg.softuni.mobilele.model.dto.OfferDTOs.SearchOfferDTO;
+import bg.softuni.mobilele.model.dto.offer.AddOfferDTO;
+import bg.softuni.mobilele.model.dto.offer.SearchOfferDTO;
 import bg.softuni.mobilele.service.BrandService;
 import bg.softuni.mobilele.service.OfferService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class OfferController {
@@ -47,7 +47,8 @@ public class OfferController {
     @PostMapping("/offers/add")
     public String addOffer(@Valid AddOfferDTO addOfferModel,
                            BindingResult bindingResult,
-                           RedirectAttributes redirectAttributes) {
+                           RedirectAttributes redirectAttributes,
+                           @AuthenticationPrincipal UserDetails userDetails) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addOfferModel", addOfferModel);
@@ -56,8 +57,7 @@ public class OfferController {
             return "redirect:/offers/add";
         }
 
-        //TODO
-        offerService.addOffer(addOfferModel);
+        offerService.addOffer(addOfferModel, userDetails);
 
         return "redirect:/offers/all";
     }

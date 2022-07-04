@@ -1,4 +1,4 @@
-package bg.softuni.mobilele.model.dto.OfferDTOs;
+package bg.softuni.mobilele.model.dto.offer;
 
 import javax.validation.constraints.NotEmpty;
 

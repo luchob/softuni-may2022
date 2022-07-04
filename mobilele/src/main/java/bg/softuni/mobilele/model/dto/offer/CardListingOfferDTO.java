@@ -1,4 +1,4 @@
-package bg.softuni.mobilele.model.dto.OfferDTOs;
+package bg.softuni.mobilele.model.dto.offer;
 
 import bg.softuni.mobilele.model.enums.EngineEnum;
 import bg.softuni.mobilele.model.enums.TransmissionEnum;

@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class MobileleUserDetailsService implements UserDetailsService {
 
-  private UserRepository userRepository;
+  private final UserRepository userRepository;
 
   public MobileleUserDetailsService(UserRepository userRepository) {
     this.userRepository = userRepository;
