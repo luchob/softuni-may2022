@@ -1,5 +1,5 @@
 body {
-     background-image: url('/img/1.jpg');
+     background-image: url('/images/1.jpg');
      background-position: center center;
      background-repeat: no-repeat;
      background-attachment: fixed;
@@ -57,3 +57,9 @@ form.main-form {
 .logged-user {
      color: white;
 }
+
+/*.input-group {*/
+/*     position: absolute;*/
+/*     top: 11%;*/
+/*     left: 0;*/
+/*}*/
