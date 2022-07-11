@@ -25,14 +25,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto col-12 justify-content-between">
                 <li class="nav-item">
-                    <a class="nav-link" href="/offers/search">Search</a>
+                    <a class="nav-link" th:text="#{navbar_search}" href="/offers/search">Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/offers/all">All Offers</a>
+                    <a class="nav-link" th:text="#{navbar_all_offers}" href="/offers/all">All Offers</a>
                 </li>
                 <th:block>
                     <li class="nav-item">
-                        <a class="nav-link" href="/brands/all">All Brands</a>
+                        <a class="nav-link" th:text="#{navbar_all_brands}" href="/brands/all">All Brands</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
                         <a class="nav-link" href="/offers/add">Add Offer</a>
@@ -62,12 +62,29 @@
 
                 <th:block sec:authorize="!isAuthenticated()">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/users/register}">Register</a>
+                        <a class="nav-link"
+                           th:text="#{navbar_register}"
+                           th:href="@{/users/register}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/users/login}">Login</a>
+                        <a class="nav-link"
+                           th:text="#{navbar_login}"
+                           th:href="@{/users/login}">Login</a>
                     </li>
                 </th:block>
+
+                <li class="nav-item">
+                    <form th:method="get">
+                        <label class="text-white" th:text="#{navbar_language}" for="lang"></label>
+                        <select
+                            onchange="this.form.submit()"
+                            id="lang"
+                            name="lang">
+                            <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                            <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                        </select>
+                    </form>
+                </li>
             </ul>
         </div>
     </nav>
