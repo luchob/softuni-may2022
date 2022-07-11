@@ -63,4 +63,16 @@ public class BooksController {
         build();
   }
 
+  @PostMapping("/{id}")
+  public ResponseEntity<BookDTO> updateBook(@PathVariable("id") Long id, @RequestBody BookDTO bookDTO) {
+
+    BookDTO updatedBookDTO = this.bookService.persistBook(id, bookDTO);
+
+    if(updatedBookDTO == null) {
+      return ResponseEntity.notFound().build();
+    }
+
+    return ResponseEntity.ok(updatedBookDTO);
+  }
+
 }
