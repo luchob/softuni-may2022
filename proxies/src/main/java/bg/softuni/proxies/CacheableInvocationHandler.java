@@ -9,7 +9,6 @@ public class CacheableInvocationHandler implements InvocationHandler {
 
   private Map<String, Object> cachedValues = new ConcurrentHashMap<>();
   private final Object realObject;
-
   public CacheableInvocationHandler(Object realObject) {
     this.realObject = realObject;
   }

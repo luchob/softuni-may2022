@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
 
 <head>
    <meta charset="UTF-8">
@@ -18,7 +20,9 @@
 
     <div class="container-fluid">
         <h2 class="text-center text-white mt-5">All Offers</h2>
-        <div class="offers row mx-auto d-flex flex-row justify-content-center">
+        <div th:each="offer : ${offers.getContent()}"
+             th:object="${offer}"
+            class="offers row mx-auto d-flex flex-row justify-content-center">
             <div class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
                 <div class="card-img-top-wrapper">
                     <img class="card-img-top" src="/" alt="Car image">
@@ -29,7 +33,7 @@
                 </div>
                 <ul class="offer-details list-group list-group-flush">
                     <li class="list-group-item">
-                        <div class="card-text"><span>• Mileage</span></div>
+                        <div class="card-text"><span>• Mileage <th:block th:text="*{mileage}"></th:block> </span></div>
                         <div class="card-text"><span>• Price</span></div>
                         <div class="card-text"><span>• Engine type</span></div>
                         <div class="card-text"><span>• Transmission type</span></div>
@@ -40,6 +44,53 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="container-fluid container-fluid row justify-content-center">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${offers.isFirst()} ? 'disabled' : ''">
+                    <a th:unless="${offers.isFirst()}"
+                       th:href="@{/offers/all(size=${offers.getSize()},page=0)}"
+                       class="page-link" href="#">First</a>
+                    <a th:if="${offers.isFirst()}"
+                       class="page-link" href="#">First</a>
+                </li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${offers.hasPrevious() ? '' : 'disabled'}">
+                    <a th:if="${offers.hasPrevious()}"
+                       th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getNumber() - 1})}"
+                       class="page-link" href="#">Previous</a>
+                    <a th:unless="${offers.hasPrevious()}"
+                       class="page-link" href="#">Previous</a>
+                </li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${offers.hasNext() ? '' : 'disabled'}">
+                    <a th:if="${offers.hasNext()}"
+                       th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getNumber() + 1})}"
+                       class="page-link" href="#">Next</a>
+                    <a th:unless="${offers.hasNext()}"
+                       class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${offers.isLast()} ? 'disabled' : ''">
+                    <a th:unless="${offers.isLast()}"
+                       th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getTotalPages() - 1})}"
+                       class="page-link" href="#">Last</a>
+                    <a th:if="${offers.isLast()}"
+                       class="page-link" href="#">Last</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
     <div>
