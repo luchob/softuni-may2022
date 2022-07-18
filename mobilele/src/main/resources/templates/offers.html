@@ -25,22 +25,23 @@
             class="offers row mx-auto d-flex flex-row justify-content-center">
             <div class="offer card col-sm-6 col-md-3  col-lg-2 m-1 p-0">
                 <div class="card-img-top-wrapper">
-                    <img class="card-img-top" src="/" alt="Car image">
+                    <img class="card-img-top" th:src="*{imageUrl}" alt="Car image">
                 </div>
                 <div class="card-body pb-1">
                     <h5 class="card-title">
-					Offer year Brand name Model name</h5>
+                        <th:block th:text="*{offerHighlight}"></th:block>
+                    </h5>
                 </div>
                 <ul class="offer-details list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="card-text"><span>• Mileage <th:block th:text="*{mileage}"></th:block> </span></div>
-                        <div class="card-text"><span>• Price</span></div>
-                        <div class="card-text"><span>• Engine type</span></div>
-                        <div class="card-text"><span>• Transmission type</span></div>
+                        <div class="card-text"><span>• Price <th:block th:text="*{price}"></th:block></span></div>
+                        <div class="card-text"><span>• Engine type <th:block th:text="*{engine}"></th:block></span></div>
+                        <div class="card-text"><span>• Transmission type <th:block th:text="*{transmission}"></th:block> </span></div>
                     </li>
                 </ul>
                 <div class="card-body">
-                    <a class="card-link" href="/">Details</a>
+                    <a class="card-link" href="#" th:href="@{/offers/{offerId}/details(offerId=*{id})}">Details</a>
                 </div>
             </div>
         </div>
