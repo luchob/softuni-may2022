@@ -2,6 +2,7 @@ package bg.softuni.mobilele.web;
 
 import bg.softuni.mobilele.model.dto.offer.AddOfferDTO;
 import bg.softuni.mobilele.model.dto.offer.SearchOfferDTO;
+import bg.softuni.mobilele.model.user.MobileleUserDetails;
 import bg.softuni.mobilele.service.BrandService;
 import bg.softuni.mobilele.service.OfferService;
 import org.springframework.data.domain.Pageable;
@@ -57,7 +58,7 @@ public class OfferController {
     public String addOffer(@Valid AddOfferDTO addOfferModel,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes,
-                           @AuthenticationPrincipal UserDetails userDetails) {
+                           @AuthenticationPrincipal MobileleUserDetails userDetails) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addOfferModel", addOfferModel);
