@@ -35,7 +35,7 @@
                         <a class="nav-link" th:text="#{navbar_all_brands}" href="/brands/all">All Brands</a>
                     </li>
                     <li class="nav-item" sec:authorize="isAuthenticated()">
-                        <a class="nav-link" href="/offers/add">Add Offer</a>
+                        <a class="nav-link" th:text="#{navbar_add_offer}" href="/offers/add">Add Offer</a>
                     </li>
                     <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
                         <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
@@ -53,7 +53,7 @@
                         <div class="form-inline my-2 my-lg-0 px-3">
                             <div class="text-white" >Welcome, <th:block th:text="${#authentication.principal.fullName}">X</th:block>!</div>
                             <form th:action="@{/users/logout}" th:method="post">
-                                <input class="btn btn-link nav-link" type="submit" value="Logout">
+                                <input class="btn btn-link nav-link" type="submit" th:value="${#navbar_logout}">
                             </form>
                         </div>
                     </li>

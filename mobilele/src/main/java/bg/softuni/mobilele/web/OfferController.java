@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @Controller
 public class OfferController {
@@ -103,11 +104,14 @@ public class OfferController {
         return "offer-search";
     }
 
-    //TODO: Имаш бонус работещо DTO - CardListingDTO със настроен mapper за offer catalogue
-
     @ModelAttribute(name = "searchOfferModel")
     private SearchOfferDTO initSearchModel() {
         return new SearchOfferDTO();
+    }
+
+    @GetMapping("/offers/{id}/details")
+    public String getOfferDetail(@PathVariable("id") UUID id) {
+        return "details";
     }
 
 }
