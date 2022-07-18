@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,12 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to Mobilele!</h1>
-    Dear <th:block th:text="${userName}">User</th:block>!
-    <p>
+    <h1 th:text="#{registration_welcome}">Welcome to Mobilele!</h1>
+    <th:block th:text="#{registration_dear_user(${userName})}">Dear Pesho!</th:block>
+    <p th:text="#{registration_happy}">
         We are happy that you are part of our community now!
     </p>
-    Best regards,
-    The Mobilele team.
+    <th:block th:text="#{registration_best_regards}">Best, Mobilele team.</th:block>
 </body>
 </html>
