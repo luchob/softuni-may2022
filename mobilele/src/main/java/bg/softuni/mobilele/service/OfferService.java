@@ -3,12 +3,14 @@ package bg.softuni.mobilele.service;
 import bg.softuni.mobilele.exception.ObjectNotFoundException;
 import bg.softuni.mobilele.model.dto.offer.AddOfferDTO;
 import bg.softuni.mobilele.model.dto.offer.OfferDetailDTO;
+import bg.softuni.mobilele.model.dto.offer.SearchOfferDTO;
 import bg.softuni.mobilele.model.entity.ModelEntity;
 import bg.softuni.mobilele.model.entity.OfferEntity;
 import bg.softuni.mobilele.model.entity.UserEntity;
 import bg.softuni.mobilele.model.mapper.OfferMapper;
 import bg.softuni.mobilele.repository.ModelRepository;
 import bg.softuni.mobilele.repository.OfferRepository;
+import bg.softuni.mobilele.repository.OfferSpecification;
 import bg.softuni.mobilele.repository.UserRepository;
 import com.lowagie.text.DocumentException;
 import org.springframework.data.domain.Page;
@@ -31,7 +33,7 @@ public class OfferService {
     private final UserRepository userRepository;
     private final ModelRepository modelRepository;
     private final OfferMapper offerMapper;
-    private TemplateEngine templateEngine;
+    private final TemplateEngine templateEngine;
 
     public OfferService(OfferRepository offerRepository,
                         UserRepository userRepository,
@@ -43,6 +45,14 @@ public class OfferService {
         this.modelRepository = modelRepository;
         this.offerMapper = offerMapper;
         this.templateEngine = templateEngine;
+    }
+
+    public List<OfferDetailDTO> getAllOffers(SearchOfferDTO searchOfferDTO) {
+        return offerRepository.
+            findAll(new OfferSpecification(searchOfferDTO)).
+            stream().
+            map(offerMapper::offerEntityToCardListingOfferDto).
+            toList();
     }
 
     public Page<OfferDetailDTO> getAllOffers(Pageable pageable) {
@@ -66,14 +76,6 @@ public class OfferService {
         newOffer.setSeller(seller);
 
         offerRepository.save(newOffer);
-    }
-
-    public List<OfferDetailDTO> findOfferByOfferName(String query) {
-        return this.offerRepository
-                .findAllByModel_NameContains(query)
-                .stream()
-                .map(offerMapper::offerEntityToCardListingOfferDto)
-                .toList();
     }
 
     public byte[] generateOfferPDF(UUID offerUUID){

@@ -17,7 +17,7 @@
 <div class="container">
     <h2 class="text-center text-white">Search for offers</h2>
     <form
-            th:method="POST"
+            th:method="GET"
             th:action="@{/offers/search}"
             th:object="${searchOfferModel}"
             class="form-inline"
@@ -25,22 +25,33 @@
     >
         <div style="position: relative">
             <input
-                    th:field="*{query}"
+                    th:field="*{model}"
                     th:errorclass="is-invalid"
                     class="form-control mr-sm-2"
                     style="width: 280px;"
                     type="search"
-                    placeholder="Search by offer model name..."
-                    aria-label="Search"
+                    placeholder="Model"
                     id="searchOffer"
             />
-            <small
-                    id="searchOfferHelpInline"
-                    class="bg-danger text-light rounded invalid-feedback"
-                    style="width: 97%; position: absolute; padding: 3px 15px; text-align: center;"
-            >
-                Try writing something this time.
-            </small>
+            <input
+                    th:field="*{minPrice}"
+                    th:errorclass="is-invalid"
+                    class="form-control mr-sm-2"
+                    style="width: 280px;"
+                    type="search"
+                    placeholder="Min price"
+                    id="minPrice"
+            />
+
+            <input
+                    th:field="*{maxPrice}"
+                    th:errorclass="is-invalid"
+                    class="form-control mr-sm-2"
+                    style="width: 280px;"
+                    type="search"
+                    placeholder="Max price"
+                    id="maxPrice"
+            />
         </div>
         <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
     </form>

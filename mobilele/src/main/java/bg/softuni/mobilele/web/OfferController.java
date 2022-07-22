@@ -76,36 +76,25 @@ public class OfferController {
     }
 
     @GetMapping("/offers/search")
-    public String searchOffer() {
-        return "offer-search";
-    }
-
-    @PostMapping("/offers/search")
-    public String searchQuery(@Valid SearchOfferDTO searchOfferDTO,
+    public String searchOffer(@Valid SearchOfferDTO searchOfferDTO,
                               BindingResult bindingResult,
-                              RedirectAttributes redirectAttributes) {
+                              Model model) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("searchOfferModel", searchOfferDTO);
-            redirectAttributes.addFlashAttribute(
-                    "org.springframework.validation.BindingResult.searchOfferModel",
-                    bindingResult);
-            return "redirect:/offers/search";
+            model.addAttribute("searchOfferModel", searchOfferDTO);
+            model.addAttribute(
+                "org.springframework.validation.BindingResult.searchOfferModel",
+                bindingResult);
+            return "offer-search";
         }
-        //TODO: Лъчо, моля покажи по-културен вариант от това, тъй като работи, но това изписване меко казано
-        // ми бърка някъде. В data.sql съм добавил оферта, за да се пробва search-a
-        return String.format("redirect:/offers/search/%s", searchOfferDTO.getQuery());
-    }
 
-    @GetMapping("offers/search/{query}")
-    public String searchResults(@PathVariable String query, Model model) {
-        model.addAttribute("offers", this.offerService.findOfferByOfferName(query));
+        model.addAttribute("searchOfferModel", searchOfferDTO);
+        if (!searchOfferDTO.isEmpty()) {
+            model.addAttribute("offers",
+                offerService.getAllOffers(searchOfferDTO));
+        }
+
         return "offer-search";
-    }
-
-    @ModelAttribute(name = "searchOfferModel")
-    private SearchOfferDTO initSearchModel() {
-        return new SearchOfferDTO();
     }
 
     @GetMapping("/offers/{id}/details")
