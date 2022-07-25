@@ -28,6 +28,7 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'com.icegreen:greenmail:1.6.9'
 	testRuntimeOnly 'org.hsqldb:hsqldb'
 }
 
