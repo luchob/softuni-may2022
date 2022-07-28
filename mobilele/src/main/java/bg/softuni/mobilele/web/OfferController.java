@@ -85,8 +85,8 @@ public class OfferController {
                               Model model) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addAttribute("searchOfferModel", searchOfferDTO);
-            redirectAttributes.addAttribute(
+            model.addAttribute("searchOfferModel", searchOfferDTO);
+            model.addAttribute(
                     "org.springframework.validation.BindingResult.searchOfferModel",
                     bindingResult);
             return "offer-search";
