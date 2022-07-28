@@ -81,7 +81,6 @@ public class OfferController {
     @GetMapping("/offers/search")
     public String searchQuery(@Valid SearchOfferDTO searchOfferDTO,
                               BindingResult bindingResult,
-                              RedirectAttributes redirectAttributes,
                               Model model) {
 
         if (bindingResult.hasErrors()) {
