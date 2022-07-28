@@ -1,19 +1,52 @@
 package bg.softuni.mobilele.model.dto.offer;
 
-import javax.validation.constraints.NotEmpty;
-
 public class SearchOfferDTO {
-    @NotEmpty
-    private String query;
 
-    public SearchOfferDTO() {
+    private String model;
+
+    private Integer minPrice;
+
+    private Integer maxPrice;
+
+    public String getModel() {
+        return model;
     }
 
-    public String getQuery() {
-        return query;
+    public SearchOfferDTO setModel(String model) {
+        this.model = model;
+        return this;
     }
 
-    public void setQuery(String query) {
-        this.query = query;
+    public Integer getMinPrice() {
+        return minPrice;
+    }
+
+    public SearchOfferDTO setMinPrice(Integer minPrice) {
+        this.minPrice = minPrice;
+        return this;
+    }
+
+    public Integer getMaxPrice() {
+        return maxPrice;
+    }
+
+    public SearchOfferDTO setMaxPrice(Integer maxPrice) {
+        this.maxPrice = maxPrice;
+        return this;
+    }
+
+    public boolean isEmpty() {
+        return (model == null || model.isEmpty()) &&
+            minPrice == null &&
+            maxPrice == null;
+    }
+
+    @Override
+    public String toString() {
+        return "SearchOfferDTO{" +
+            "model='" + model + '\'' +
+            ", minPrice=" + minPrice +
+            ", maxPrice=" + maxPrice +
+            '}';
     }
 }

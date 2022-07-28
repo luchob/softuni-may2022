@@ -76,37 +76,31 @@ public class OfferController {
         return "redirect:/offers/all";
     }
 
-    @GetMapping("/offers/search")
-    public String searchOffer() {
-        return "offer-search";
-    }
 
-    @PostMapping("/offers/search")
+
+    @GetMapping("/offers/search")
     public String searchQuery(@Valid SearchOfferDTO searchOfferDTO,
                               BindingResult bindingResult,
-                              RedirectAttributes redirectAttributes) {
+                              RedirectAttributes redirectAttributes,
+                              Model model) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("searchOfferModel", searchOfferDTO);
-            redirectAttributes.addFlashAttribute(
+            redirectAttributes.addAttribute("searchOfferModel", searchOfferDTO);
+            redirectAttributes.addAttribute(
                     "org.springframework.validation.BindingResult.searchOfferModel",
                     bindingResult);
-            return "redirect:/offers/search";
+            return "offer-search";
         }
-        //TODO: Лъчо, моля покажи по-културен вариант от това, тъй като работи, но това изписване меко казано
-        // ми бърка някъде. В data.sql съм добавил оферта, за да се пробва search-a
-        return String.format("redirect:/offers/search/%s", searchOfferDTO.getQuery());
-    }
 
-    @GetMapping("offers/search/{query}")
-    public String searchResults(@PathVariable String query, Model model) {
-        model.addAttribute("offers", this.offerService.findOfferByOfferName(query));
+        if (!model.containsAttribute("searchOfferModel")) {
+            model.addAttribute("searchOfferModel", searchOfferDTO);
+        }
+
+        if (!searchOfferDTO.isEmpty()) {
+            model.addAttribute("offers", offerService.searchOffer(searchOfferDTO));
+        }
+
         return "offer-search";
-    }
-
-    @ModelAttribute(name = "searchOfferModel")
-    private SearchOfferDTO initSearchModel() {
-        return new SearchOfferDTO();
     }
 
     @GetMapping("/offers/{id}/details")

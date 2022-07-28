@@ -2,12 +2,14 @@ package bg.softuni.mobilele.service;
 
 import bg.softuni.mobilele.model.dto.offer.AddOfferDTO;
 import bg.softuni.mobilele.model.dto.offer.OfferDetailDTO;
+import bg.softuni.mobilele.model.dto.offer.SearchOfferDTO;
 import bg.softuni.mobilele.model.entity.ModelEntity;
 import bg.softuni.mobilele.model.entity.OfferEntity;
 import bg.softuni.mobilele.model.entity.UserEntity;
 import bg.softuni.mobilele.model.mapper.OfferMapper;
 import bg.softuni.mobilele.repository.ModelRepository;
 import bg.softuni.mobilele.repository.OfferRepository;
+import bg.softuni.mobilele.repository.OfferSpecification;
 import bg.softuni.mobilele.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -57,11 +59,10 @@ public class OfferService {
         offerRepository.save(newOffer);
     }
 
-    public List<OfferDetailDTO> findOfferByOfferName(String query) {
-        return this.offerRepository
-                .findAllByModel_NameContains(query)
-                .stream()
-                .map(offer -> offerMapper.offerEntityToCardListingOfferDto(offer))
-                .toList();
+
+    public List<OfferDetailDTO> searchOffer(SearchOfferDTO searchOfferDTO) {
+        return this.offerRepository.findAll(new OfferSpecification(searchOfferDTO)).
+            stream().map(offer -> offerMapper.offerEntityToCardListingOfferDto(offer)).
+            toList();
     }
 }
