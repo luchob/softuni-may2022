@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/mobilelele?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
-    password:
+    url: "jdbc:mysql://${MYSQL_HOST:localhost}:3306/mobilelele?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    username: "${MYSQL_USER:root}"
+    password: "${MYSQL_PASSWORD:}"
   sql:
     init:
       mode: always
