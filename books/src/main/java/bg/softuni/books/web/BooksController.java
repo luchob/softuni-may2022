@@ -2,6 +2,9 @@ package bg.softuni.books.web;
 
 import bg.softuni.books.model.dto.BookDTO;
 import bg.softuni.books.service.BookService;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +32,20 @@ public class BooksController {
         ok(bookService.getAllBooks());
   }
 
+  @Tag(name = "Get book by ID", description = "Returns the book details by its id")
+  @Parameter(
+      name = "id",
+      description = "The ID of the book",
+      required = true
+  )
+  @ApiResponse(
+      responseCode = "200",
+      description = "If the book was retrieved successfully"
+  )
+  @ApiResponse(
+      responseCode = "404",
+      description = "If the book was not found"
+  )
   @GetMapping("/{id}")
   public ResponseEntity<BookDTO> getBookById(@PathVariable("id") Long bookId) {
     Optional<BookDTO> bookOpt = bookService.getBookById(bookId);
