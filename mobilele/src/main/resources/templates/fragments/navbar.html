@@ -53,7 +53,7 @@
                         <div class="form-inline my-2 my-lg-0 px-3">
                             <div class="text-white" >Welcome, <th:block th:text="${#authentication.principal.fullName}">X</th:block>!</div>
                             <form th:action="@{/users/logout}" th:method="post">
-                                <input class="btn btn-link nav-link" type="submit" th:value="${#navbar_logout}">
+                                <input class="btn btn-link nav-link" type="submit" th:value="#{navbar_logout}">
                             </form>
                         </div>
                     </li>
