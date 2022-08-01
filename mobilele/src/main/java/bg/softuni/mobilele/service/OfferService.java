@@ -1,6 +1,6 @@
 package bg.softuni.mobilele.service;
 
-import bg.softuni.mobilele.model.dto.offer.AddOfferDTO;
+import bg.softuni.mobilele.model.dto.offer.CreateOrUpdateOfferDTO;
 import bg.softuni.mobilele.model.dto.offer.OfferDetailDTO;
 import bg.softuni.mobilele.model.dto.offer.SearchOfferDTO;
 import bg.softuni.mobilele.model.entity.ModelEntity;
@@ -73,15 +73,21 @@ public class OfferService {
 
     }
 
+    public Optional<CreateOrUpdateOfferDTO> getOfferEditDetails(UUID offerID) {
+        return offerRepository.
+            findById(offerID).
+            map(offerMapper::offerEntityToCreateOrUpdateOfferDtoTo);
+    }
+
     public Optional<OfferDetailDTO> findOfferByUUID(UUID offerID) {
         return offerRepository.
             findById(offerID).
             map(offerMapper::offerEntityToOfferDetailDto);
     }
 
-    public void addOffer(AddOfferDTO addOfferDTO, UserDetails userDetails) {
+    public void addOffer(CreateOrUpdateOfferDTO addOfferDTO, UserDetails userDetails) {
         OfferEntity newOffer = offerMapper.
-                addOfferDtoToOfferEntity(addOfferDTO);
+            createOrUpdateOfferDtoToOfferEntity(addOfferDTO);
 
         UserEntity seller = userRepository.findByEmail(userDetails.getUsername()).
                 orElseThrow();

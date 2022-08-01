@@ -41,6 +41,10 @@
                     <input type="submit" value="Delete">
                 </form>
             </div>
+
+            <a th:href="@{/offers/{id}/edit(id=*{id})}">
+                Edit offer
+            </a>
         </div>
         <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
             <img th:src="*{imageUrl}" class="card-img-top"  alt="Car image">

@@ -19,7 +19,7 @@ spring:
         registration:
           facebook:
             client-id: 412887257605774
-            client-secret: cca6d6d93096248486e578917154c3f5
+            client-secret: todo
   sql:
     init:
       mode: always
