@@ -58,6 +58,17 @@ form.main-form {
      color: white;
 }
 
+.invisible {
+     display: none;
+}
+
+.red-icon {
+     color: red;
+}
+
+.green-icon {
+     color: green;
+}
 /*.input-group {*/
 /*     position: absolute;*/
 /*     top: 11%;*/

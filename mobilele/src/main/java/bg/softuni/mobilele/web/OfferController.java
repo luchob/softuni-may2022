@@ -110,7 +110,9 @@ public class OfferController {
     }
 
     @GetMapping("/offers/{id}/details")
-    public String getOfferDetail(@PathVariable("id") UUID id) {
+    public String getOfferDetail(@PathVariable("id") UUID id,
+                                 Model model) {
+        model.addAttribute("offerId", id);
         return "details";
     }
 
