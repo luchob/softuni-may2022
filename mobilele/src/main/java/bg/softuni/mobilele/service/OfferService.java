@@ -23,10 +23,10 @@ import java.util.UUID;
 @Service
 public class OfferService {
 
-    private OfferRepository offerRepository;
-    private UserRepository userRepository;
-    private ModelRepository modelRepository;
-    private OfferMapper offerMapper;
+    private final OfferRepository offerRepository;
+    private final UserRepository userRepository;
+    private final ModelRepository modelRepository;
+    private final OfferMapper offerMapper;
 
     public OfferService(OfferRepository offerRepository,
                         UserRepository userRepository,
@@ -36,6 +36,10 @@ public class OfferService {
         this.userRepository = userRepository;
         this.modelRepository = modelRepository;
         this.offerMapper = offerMapper;
+    }
+
+    public void deleteOfferById(UUID offerId) {
+        offerRepository.deleteById(offerId);
     }
 
     public Page<OfferDetailDTO> getAllOffers(Pageable pageable) {
