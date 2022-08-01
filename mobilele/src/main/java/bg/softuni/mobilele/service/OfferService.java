@@ -17,6 +17,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class OfferService {
@@ -39,8 +41,14 @@ public class OfferService {
     public Page<OfferDetailDTO> getAllOffers(Pageable pageable) {
         return offerRepository.
             findAll(pageable).
-            map(offerMapper::offerEntityToCardListingOfferDto);
+            map(offerMapper::offerEntityToOfferDetailDto);
 
+    }
+
+    public Optional<OfferDetailDTO> findOfferByUUID(UUID offerID) {
+        return offerRepository.
+            findById(offerID).
+            map(offerMapper::offerEntityToOfferDetailDto);
     }
 
     public void addOffer(AddOfferDTO addOfferDTO, UserDetails userDetails) {
@@ -62,7 +70,7 @@ public class OfferService {
 
     public List<OfferDetailDTO> searchOffer(SearchOfferDTO searchOfferDTO) {
         return this.offerRepository.findAll(new OfferSpecification(searchOfferDTO)).
-            stream().map(offer -> offerMapper.offerEntityToCardListingOfferDto(offer)).
+            stream().map(offer -> offerMapper.offerEntityToOfferDetailDto(offer)).
             toList();
     }
 }

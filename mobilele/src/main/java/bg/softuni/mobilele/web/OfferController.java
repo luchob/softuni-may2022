@@ -1,5 +1,6 @@
 package bg.softuni.mobilele.web;
 
+import bg.softuni.mobilele.exception.ObjectNotFoundException;
 import bg.softuni.mobilele.model.dto.offer.AddOfferDTO;
 import bg.softuni.mobilele.model.dto.offer.SearchOfferDTO;
 import bg.softuni.mobilele.model.user.MobileleUserDetails;
@@ -103,7 +104,16 @@ public class OfferController {
     }
 
     @GetMapping("/offers/{id}/details")
-    public String getOfferDetail(@PathVariable("id") UUID id) {
+    public String getOfferDetail(@PathVariable("id") UUID uuid,
+                                 Model model) {
+
+        var offerDto =
+            offerService.findOfferByUUID(uuid).
+                orElseThrow(() -> new ObjectNotFoundException("Offer with UUID " +
+                    uuid + " not found!"));
+
+        model.addAttribute("offer", offerDto);
+
         return "details";
     }
 
