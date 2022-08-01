@@ -13,12 +13,20 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 412887257605774
+            client-secret: cca6d6d93096248486e578917154c3f5
   sql:
     init:
       mode: always
 
 logging:
   level:
+    org.springframework: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
