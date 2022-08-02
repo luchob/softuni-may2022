@@ -18,7 +18,7 @@ spring:
       client:
         registration:
           facebook:
-            client-id: 412887257605774
+            client-id: 5305056692942994
             client-secret: todo
   sql:
     init:
