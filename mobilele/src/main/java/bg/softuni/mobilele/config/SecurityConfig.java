@@ -8,6 +8,7 @@ import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointR
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -41,6 +42,7 @@ public class SecurityConfig {
             requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll().
         // everyone can login and register
             antMatchers("/", "/users/login", "/users/register").permitAll().
+            antMatchers("/offers/add").authenticated().
             antMatchers("/offers/**").permitAll().
             antMatchers("/maintenance").permitAll().
         // all other pages are available for logger in users
@@ -79,6 +81,7 @@ public class SecurityConfig {
     return http.build();
   }
 
+  @Primary
   @Bean
   public UserDetailsService userDetailsService(UserRepository userRepository) {
     return new MobileleUserDetailsService(userRepository);

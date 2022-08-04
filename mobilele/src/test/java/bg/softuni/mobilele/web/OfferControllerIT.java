@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -91,5 +93,24 @@ class OfferControllerIT {
             with(csrf())
         ).
         andExpect(status().isForbidden());
+  }
+
+  @WithUserDetails(value = "user@example.com",
+    userDetailsServiceBeanName = "testUserDataService")
+  @Test
+  void testAddOffer() throws Exception {
+
+    mockMvc.perform(post("/offers/add").
+            param("modelId", "1").
+            param("price", "11200").
+            param("engine", "GASOLINE").
+            param("year", "1979").
+            param("mileage", "1000").
+            param("description", "test").
+            param("imageUrl", "image://test.png").
+            with(csrf())
+        ).
+        andExpect(status().is3xxRedirection()).
+        andExpect(redirectedUrl("/"));
   }
 }
