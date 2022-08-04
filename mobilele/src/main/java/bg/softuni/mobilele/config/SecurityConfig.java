@@ -4,6 +4,7 @@ import bg.softuni.mobilele.model.user.MobileleUserDetails;
 import bg.softuni.mobilele.repository.UserRepository;
 import bg.softuni.mobilele.service.MobileleUserDetailsService;
 import bg.softuni.mobilele.service.OAuthSuccessHandler;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,9 +38,11 @@ public class SecurityConfig {
             authorizeRequests().
         // everyone can download static resources (css, js, images)
             requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
+            requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll().
         // everyone can login and register
             antMatchers("/", "/users/login", "/users/register").permitAll().
             antMatchers("/offers/**").permitAll().
+            antMatchers("/maintenance").permitAll().
         // all other pages are available for logger in users
             anyRequest().
         authenticated().

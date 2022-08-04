@@ -14,9 +14,10 @@ repositories {
 
 dependencies {
 
-	implementation 'org.mapstruct:mapstruct:1.5.1.Final'
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.1.Final'
+	implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
 
+	implementation "io.micrometer:micrometer-registry-prometheus"
 	implementation "org.springframework.boot:spring-boot-starter-mail"
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -25,6 +26,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.security:spring-security-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

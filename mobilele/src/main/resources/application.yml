@@ -26,7 +26,6 @@ spring:
 
 logging:
   level:
-    org.springframework: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
@@ -35,3 +34,12 @@ mail:
   port: 1025
   username: "mobilele@mobilele.com"
   password: ""
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
