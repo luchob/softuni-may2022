@@ -107,10 +107,11 @@ class OfferControllerIT {
             param("year", "1979").
             param("mileage", "1000").
             param("description", "test").
+            param("transmission", "MANUAL").
             param("imageUrl", "image://test.png").
             with(csrf())
         ).
         andExpect(status().is3xxRedirection()).
-        andExpect(redirectedUrl("/"));
+        andExpect(redirectedUrl("/offers/all"));
   }
 }
