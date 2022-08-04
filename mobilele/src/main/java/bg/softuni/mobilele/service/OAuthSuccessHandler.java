@@ -25,7 +25,7 @@ public class OAuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
   @Override
   public void onAuthenticationSuccess(HttpServletRequest request,
-                                      HttpServletResponse response, FilterChain chain,
+                                      HttpServletResponse response,
                                       Authentication authentication) throws IOException, ServletException {
 
     if (authentication instanceof
@@ -39,6 +39,6 @@ public class OAuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
       userService.login(userEmail);
     }
 
-    super.onAuthenticationSuccess(request, response, chain, authentication);
+    super.onAuthenticationSuccess(request, response, authentication);
   }
 }
