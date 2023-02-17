@@ -1,6 +1,6 @@
 package bg.softuni.books.model.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "books")

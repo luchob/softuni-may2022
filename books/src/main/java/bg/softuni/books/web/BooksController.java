@@ -49,14 +49,10 @@ public class BooksController {
   @GetMapping("/{id}")
   public ResponseEntity<BookDTO> getBookById(@PathVariable("id") Long bookId) {
     Optional<BookDTO> bookOpt = bookService.getBookById(bookId);
-    if (bookOpt.isEmpty()) {
-      return ResponseEntity.
-          notFound().
-          build();
-    } else {
-      return ResponseEntity.
-          ok(bookOpt.get());
-    }
+    return bookOpt.
+        map(ResponseEntity::ok).
+        orElseGet(() -> ResponseEntity.notFound().
+        build());
   }
 
   @PostMapping
